@@ -1,0 +1,34 @@
+# calcula e escreve o ciclo de n
+
+# dat guarda o n atualizado
+# acc guarda sempre (n-1) atualizado p/ comparação do while
+
+mov 22 dat  # define n = 22 e guarda em dat
+mov dat acc # copia para acc o valor n e...
+sub 1       # subtrai 1
+
+jeq 16      # while (n-1) != 0, ou seja, while n != 1
+
+prt dat     #   escreve o n atual
+mov dat acc #   copia o n atual para acc
+mod 2       #   calcula o n%2 em acc
+
+jeq +7      #   se n%2 != 0, prossegue, senão vai p/ else
+
+            #   (IF: caso onde n é ímpar, vamos fazer n = n*3 + 1)
+mov dat acc #     coloca o n atual em acc
+mul 3       #     multiplica n por 3 (n = n*3)
+add 1       #     adiciona 1 ao n (n = n+1)
+mov acc dat #     copia novo n para dat
+sub 1       #     atualiza acc com n-1
+jmp 5       #     vai p/ final do if/else
+
+            #   (ELSE: caso onde n é par, vamos fazer n = n/2)
+mov dat acc #     coloca o n atual em acc
+div 2       #     divide n por 2 (n = n/2)
+mov acc dat #     copia novo n para dat
+sub 1       #     atualiza acc com n-1
+
+jmp -15     #   volta p/ a comparação do laço
+
+prt 1       # escreve último elemento do ciclo

@@ -1,0 +1,6 @@
+mov 0 acc
+  # adsad
+# abaixo realizaremos uma soma (esta linha não conta)
+  add 8
+
+prt acc

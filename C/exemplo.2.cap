@@ -1,0 +1,7 @@
+jmp 2
+jmp 5
+jmp +1 # não faz diferença ter um + antes do numero positivo
+prt pc
+prt pc
+jmp -4
+prt pc

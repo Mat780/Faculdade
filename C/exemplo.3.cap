@@ -1,0 +1,18 @@
+# calcula o fatorial de n
+
+# acc guarda o n atual
+# dat guarda o fatorial atual
+
+mov 5 acc   # define n = 5 e guarda em acc
+mov 1 dat   # fatorial inicial = 1
+
+jeq 8       # while n != 0
+mov acc ext #   faz copia de n atual
+mov dat acc #   coloca fat atual em acc
+mul ext     #   multiplica fat por n
+mov acc dat #   copia fat para dat
+mov ext acc #   volta n para acc
+sub 1       #   faz n--
+jmp -7      #   volta p/ a comparação do laço
+
+prt dat     # escreve resposta
