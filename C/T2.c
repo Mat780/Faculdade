@@ -25,27 +25,6 @@ typedef struct instr {
 
 } instruction;
 
-void imprime_lista(instruction *lista) {
-
-    instruction *p;
-
-    for (p = lista->next; p != NULL; p = p->next) {
-        printf("\nOperacao: ");
-        
-        printf("%s\n", p->op);
-        
-        printf("Val1: %d\n", p->val1);
-
-        printf("Operador 1: ");
-        printf("%s", p->reg1);
-
-        printf("\nOperador 2: ");
-        printf("%s", p->reg2);
-
-        printf("\n--------------FIM DA LINHA----------------\n");
-    }
-}
-
 void insere(instruction *nova, instruction *lista) { 
     
     instruction *p, *q;
@@ -138,10 +117,7 @@ void ler_aquivo(instruction *lista, char *argv[]) {
         insere(nova, lista);
     }
 
-    imprime_lista(lista);
-
     fclose(file);
-
 }
 
 void mov(int copy, int *paste){ // Copia o valor do 1º operando para o 2º operando
@@ -172,23 +148,24 @@ void mod(int *acc, int mod){ // Calcula o resto da divisão do valor no registra
 }
 
 void jmp(instruction **lista, int movimentos, int *pc){ //Avança no programa a quantidade de instruções definida no 1º operando (se positivo) ou retrocede (se negativo), atualizando indiretamente o registrador pc. O 1º operando nunca será 0.
+    
     if(movimentos > 0){
         while(movimentos != 0){
-            *lista = *lista->next;
+            *lista = (*lista)->next;
             (*pc)++;
             movimentos--;
-            printf("Movimentos: %d\n PC: %d\n", movimentos, *pc);
+            //printf("Movimentos: %d\n PC: %d\n", movimentos, *pc);
 
         }
         
     } else {
         while(movimentos != 0){
-            *lista = *lista->prev;
+            *lista = (*lista)->prev;
             (*pc)--;
             movimentos++;
-            printf("Movimentos: %d\n PC: %d\n", movimentos, *pc);
                 
         }
+
     }
     
 }
@@ -196,18 +173,27 @@ void jmp(instruction **lista, int movimentos, int *pc){ //Avança no programa a 
 void jeq(instruction **lista, int *acc, int movimentos, int *pc){ // Como jmp, mas apenas se o valor no registrador acc é igual a 0 .
     if(*acc == 0){
         jmp(lista, movimentos, pc);
+    } else {
+        *lista = (*lista)->next;
+        (*pc)++;
     }
 }
 
 void jlt(instruction **lista, int *acc, int movimentos, int *pc){ //Como jmp, mas apenas se o valor no registrador acc é menor que 0.
     if(*acc < 0){
         jmp(lista, movimentos, pc);
+    } else {
+        *lista = (*lista)->next;
+        (*pc)++;
     }
 }
 
 void jgt(instruction **lista, int *acc, int movimentos, int *pc){ //Como jmp, mas apenas se o valor no registrador acc é maior que 0.
     if(*acc > 0){
         jmp(lista, movimentos, pc);
+    } else {
+        *lista = (*lista)->next;
+        (*pc)++;
     }
 } 
 
@@ -231,15 +217,12 @@ int *qual_reg(char letra, int *acc, int *data, int *ext, int *pc){
 
 void executar(instruction *lista){
 
-    int acc, data, ext, pc, cont = 0;
+    int acc, data, ext, pc;
     int *pont_reg1, *pont_reg2;
     acc = data = ext = pc = 0;
 
     while(lista != NULL){
-        cont++;
-        if(cont > 10){
-            break;
-        }
+        
         if(lista->op[0] == 'm'){
 
             if(lista->op[2] == 'v'){
@@ -251,7 +234,6 @@ void executar(instruction *lista){
                 } else {
                     pont_reg1 = qual_reg(lista->reg1[0], &acc, &data, &ext, &pc);
                     mov(*pont_reg1, pont_reg2);
-
                 }
 
             } else if(lista->op[2] == 'd'){
@@ -272,25 +254,24 @@ void executar(instruction *lista){
                     mul(&acc, *pont_reg1);
 
                 }
-
             }
 
             lista = lista->next;
+            pc++;
 
         } else if(lista->op[0] == 'j'){
 
             if(lista->op[1] == 'm'){
-                printf("\n Lista fora: %d\n", lista->val1);
-                jmp(lista, lista->val1, &pc);
+                jmp(&lista, lista->val1, &pc);
 
             } else if (lista->op[1] == 'e'){
-                jeq(lista, &acc, lista->val1, &pc);
+                jeq(&lista, &acc, lista->val1, &pc);
 
             } else if (lista->op[1] == 'l'){
-                jlt(lista, &acc, lista->val1, &pc);
+                jlt(&lista, &acc, lista->val1, &pc);
                 
             } else {
-                jgt(lista, &acc, lista->val1, &pc);
+                jgt(&lista, &acc, lista->val1, &pc);
                 
             }
 
@@ -334,6 +315,7 @@ void executar(instruction *lista){
             }
 
             lista = lista->next;
+            pc++;
         } 
 
     }
@@ -349,14 +331,6 @@ int main (int argc, char *argv[]) {
     lista->next = NULL;
  
     ler_aquivo(lista, argv);
-
     executar(lista->next);
 
-
 }
-
-/*
-
- Ponteiros de ponteiros nos JMP's
-
-*/
