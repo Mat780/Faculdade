@@ -7,7 +7,7 @@ use ieee.std_logic_1164.all;
 -- senha_digitada = É a senha que será digitada tanto na hora da tentativa de desbloquear a porta quanto na hora de salvar a senha na memória.
 -- modo_op = O modo de operação da porta. Ela pode estar em "0" que significa modo de configuração onde pode-se alterar a senha da porta, quando em "1" significa modo de operação neste modo a senha_digitada é interpretada como tentativa de abrir a porta.
 -- clock = Em resumo, é um relógio para deixar o sistema síncrono.
--- reset = Ele liga ou reinicia o sistema da porta, resetando sua senha para "00000000".
+-- reset = Ele liga ou reinicia o sistema da porta, resetando sua senha para "00010011".
 
 -- OUTPUT: 
 -- fechado = Indica se a porta está fechada, enquanto estiver em "1" significa que está fechada, assim que o sinal abaixar para "0" a porta estará aberta.
