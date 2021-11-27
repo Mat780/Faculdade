@@ -9,7 +9,6 @@ entity comparador is
 						resultado: OUT std_logic); 
 end comparador;
 
-
 -- Compara as senhas de teclas 1 com a de teclas2.
 architecture comparar of comparador is
     BEGIN

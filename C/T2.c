@@ -6,12 +6,12 @@
 *
 */
 
-// Importando todas as bibliotecas necessárias
-#include <stdio.h> // Biblioteca básica da linguagem C
-#include <stdlib.h> // Biblioteca necessária para alocar espaços na memoria para a lista duplamente encadeada
-#include <string.h> // Biblioteca necessária para poder copiar a string para dentro do registro
+// Importando todas as bibliotecas necessarias
+#include <stdio.h> // Biblioteca basica da linguagem C
+#include <stdlib.h> // Biblioteca necessaria para alocar espaços na memoria para a lista duplamente encadeada
+#include <string.h> // Biblioteca necessaria para poder copiar a string para dentro do registro
 
-#define MAX_OP 3 // Numero maximo para operação
+#define MAX_OP 3 // Numero maximo para operacao
 #define MAX_LINE 128 // Numero maximo da linha
 
 typedef struct instr {
@@ -26,8 +26,8 @@ typedef struct instr {
 
 } instruction; // Definicao do nome do registro
 
-/*  Funcao insere: tem como parametro um registro novo a ser inserido e um ponteiro para a lista
-    , assim inserindo na ultima posicao o novo registro da funcao */
+/*  Funcao insere: tem como parametro um registro novo a ser inserido e um ponteiro para a lista,
+    assim inserindo na ultima posicao o novo registro da funcao */
 void insere(instruction *nova, instruction *lista) { 
     
     // Inicializa 2 ponteiros para celulas de instrucao
@@ -37,7 +37,7 @@ void insere(instruction *nova, instruction *lista) {
     p = lista;
     q = lista->next;
 
-    // Aqui ele vai procurar o fim da lista, até que "q" seja igual a null, pois assim "p" sera o ultimo registro
+    // Aqui ele vai procurar o fim da lista, ate que "q" seja igual a null, pois assim "p" sera o ultimo registro
     while (q != NULL) {
         p = q;
         q = q->next;
@@ -61,7 +61,7 @@ void insere(instruction *nova, instruction *lista) {
 void leitura_capivarica(instruction *lista, char *argv[]) {
 
     int control_op = 0, control_insere = 0; // Inicialização das variaveis inteiras
-    char command[MAX_OP+1]; // Inicio do vetor de comando
+    char command[MAX_LINE+1]; // Inicio do vetor de comando
 
     FILE *file; // Ponteiro do arquivo
 
@@ -75,11 +75,11 @@ void leitura_capivarica(instruction *lista, char *argv[]) {
 
         // Caso ele ache um #, vai ler e ignorar completamente o que vier a seguir
         if (command[0] == '#'){
-			fscanf(file, "%*[^\n] ");
+		    fscanf(file, "%*[^\n] ");
 
-        } else { // Senão, é uma operação que precisa ser preenchida
+        } else { // Senão, e uma operação que precisa ser preenchida
 
-            // Este primeiro if verifica se é algum tipo de operacao valida
+            // Este primeiro if verifica se e algum tipo de operacao valida
             if(command[1] == 'o' || command[1] == 'd' || command[1] == 'u' || command[1] == 'i' || command[1] == 'm' || command[1] == 'e' || command[1] == 'l'|| command[1] == 'g' || command[1] == 'r'){
 
                 // Se for uma operacao valida ele ira verificar se ha alguma instrucao anterior
@@ -99,13 +99,13 @@ void leitura_capivarica(instruction *lista, char *argv[]) {
                     nova = (instruction *) malloc(sizeof (instruction));
                 }
 
-                strcpy(nova->op, command); // Define a operação a ser feita
+                strcpy(nova->op, command); // Define a operacao a ser feita
                 control_op = 0; // Reseta o controlador de operacoes
                 control_insere = 1; // Define insercao para 1
 
             } else if (control_op == 0){
                 // Ele pode ser tanto numero quanto letra
-                // Se for numero pode ter + - , por isso temos que converte-lo
+                // Se for numero pode ter "+" ou "-", por isso temos que converte-lo
                 if(command[0] == '+' || command[0] == '-' || (command[0] >= '0' && command[0] <= '9') ){
                     // Ele transforma a string em inteiro
                     nova->val1 = atoi(command);
@@ -210,7 +210,7 @@ void jmp(instruction **lista, int movimentos, int *pc){ // Funcao jmp: Avança n
     // Pois jmp e chamado em outra funcoes
 }
 
-void jeq(instruction **lista, int *acc, int movimentos, int *pc){ // Funcao jeq: Como jmp, mas apenas se o valor no registrador acc é igual a 0.
+void jeq(instruction **lista, int *acc, int movimentos, int *pc){ // Funcao jeq: Como jmp, mas apenas se o valor na variavel acc e igual a 0.
     // Se acc for igual a 0, executa o jmp
     if(*acc == 0){
         jmp(lista, movimentos, pc); 
@@ -254,7 +254,7 @@ void prt(int valor){ //Exibe na tela o valor do 1º operando.
     printf("%d\n", valor);
 }
 
-int *qual_reg(char letra, int *acc, int *data, int *ext, int *pc){ // Função para determinar qual registrador utilizar
+int *qual_reg(char letra, int *acc, int *data, int *ext, int *pc){ // Funcao para determinar qual registrador utilizar
 
     // Verificacao de qual ponteiro de variavel mandar
     if(letra == 'a'){
@@ -284,7 +284,6 @@ void executar(instruction *lista){ // Funcao executar: Basicamente executa o cod
         // Se a primeira letra do operador for "m"
         if(lista->op[0] == 'm'){
 
-            
             if(lista->op[2] == 'v'){ // Se a terceira letra do operador for "v"
                 // Pega o ponteiro da variavel, escrita no registrador 2
                 pont_reg2 = qual_reg(lista->reg2[0], &acc, &data, &ext, &pc);
@@ -417,10 +416,10 @@ int main (int argc, char *argv[]) {
     lista->next = NULL;
  
     // Primeiro vamos ler o arquivo de texto passado via linha de comando,
-    // Nesta mesma função ele irá alocar as operações dentro da lista duplamente encadeada;
+    // Nesta mesma funcao ele ira alocar as operacoes dentro da lista duplamente encadeada;
     leitura_capivarica(lista, argv);
 
-    // Após a leitura e alocação para a lista iremos executar as operações que foram setadas
+    // Apos a leitura e alocação para a lista iremos executar as operacoes que foram setadas
     executar(lista->next);
 
 }
