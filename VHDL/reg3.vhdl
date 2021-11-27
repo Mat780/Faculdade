@@ -22,7 +22,7 @@ architecture reset of reg3 is
 			if reset = '1' then
 				estado_anterior <= "001";
 
-			-- Senão e clock estiver em nível alto, então estado_anterior passa para estado.
+			-- Se clock estiver em nível alto, então estado_anterior passa para estado.
 			elsif clock'event and clock = '1' then estado_anterior <= estado;
 			
 			END if;
