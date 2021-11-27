@@ -1,24 +1,30 @@
+-- Importação das bibliotecas.
 library ieee;
 use ieee.std_logic_1164.all;
 
--- Registrador com 2 Fliflops D.
+-- Entidade responsável por salvar no estado anterior o estado atual, ou seja,
+-- informar ao estado passado qual o estado de destino.
 entity reg3 is 
-	port (D: IN std_logic_vector(1 downto 0);
+	-- Estado recebe 2 ou 0.
+	port (estado: IN std_logic_vector(2 downto 0);
+			-- Clock e reset como portas lógicas.
 			clock, reset: IN std_logic;
-			Q: OUT std_logic_vector(1 downto 0));
+			-- Estado_anterior recebe 2 ou 0.
+			estado_anterior: OUT std_logic_vector(2 downto 0));
 END reg3;
 
--- Modo para resetar o Registrador.
+-- Arquitetura de reset da fechadura.
 architecture reset of reg3 is
 	BEGIN
 		process (clock, reset)
 		BEGIN
+		--Se reset estiver em nível alto, o estado passa a ser 001.
 			if reset = '1' then
-				Q <= "01";
+				estado_anterior <= "001";
 
-			elsif clock'event and clock = '1' then Q <= D;
+			-- Senão e clock estiver em nível alto, então estado_anterior passa para estado.
+			elsif clock'event and clock = '1' then estado_anterior <= estado;
 			
 			END if;
 		END process;
 	END reset;
-
