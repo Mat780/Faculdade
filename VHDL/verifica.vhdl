@@ -15,7 +15,8 @@ use ieee.std_logic_1164.all;
 
 entity verifica is
 	port(senha_digitada: IN std_logic_vector (7 downto 0);
-		modo_op, clock, reset: IN std_logic;
+		modo_op: IN std_logic :='1'; 
+		clock, reset: IN std_logic;
 		fechado, senha_invalida : OUT std_logic);
 
 end verifica;
