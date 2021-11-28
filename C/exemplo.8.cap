@@ -1,0 +1,16 @@
+# Sort entre dois números ¯\_(° u°)_/¯
+# Mude os valores de dat e ext para testar as instruções
+mov 1 dat    # Iniciando o dat
+mov 3 ext    # Iniciando o ext
+
+# acc vai guardar o resultado da diferença dat-ext
+mov dat acc  
+sub ext
+jgt 2        # Se acc>0, troque os valores e imprima o resultado
+jmp 4        # Senão, apenas imprima o resultado
+mov ext acc
+mov dat ext
+mov acc dat
+
+prt dat      # dat = menor
+prt ext      # ext = maior

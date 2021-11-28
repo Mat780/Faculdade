@@ -1,0 +1,18 @@
+mov   9   acc  #acc = 9
+  mov 3   dat  # dat = 3
+mov   5 ext  #ext = 5
+
+#isso é um comentério;
+# isso também é um comentério;
+#  #  Espaços   em    branco;
+
+  jlt 4 
+
+    sub    dat
+    prt    acc
+
+  jmp -3
+
+prt  pc
+
+  # prt acc
