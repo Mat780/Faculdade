@@ -280,7 +280,6 @@ void executar(instruction *lista){ // Funcao executar: Basicamente executa o cod
 
     // Enquanto a lista nao acabar, execute...
     while(lista != NULL){
-        
         // Se a primeira letra do operador for "m"
         if(lista->op[0] == 'm'){
 
