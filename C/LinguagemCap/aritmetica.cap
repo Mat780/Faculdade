@@ -1,0 +1,39 @@
+add 1
+add 100
+add 10000
+mod 31
+mul 17
+sub 99999
+prt acc
+add 99999
+prt acc
+div 127
+mov acc ext
+add 1
+add 100
+add 10000
+mod 133
+mul 17
+sub 99999
+add 99999
+div 127
+add ext
+mov acc dat
+add pc
+add ext
+add dat
+add acc
+prt acc
+prt ext
+prt dat
+prt pc
+prt -1
+mov 10 acc
+mov 15 dat
+mov 2 ext
+mul acc
+mod dat
+div ext
+prt acc
+prt dat
+prt ext
