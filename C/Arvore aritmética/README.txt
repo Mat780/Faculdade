@@ -16,5 +16,9 @@ Numeros aceitos: >= 0 , Ou seja numeros positivos (Isso só se aplica a entrada,
 
 Operadores aceitos: + , - , * e / 
 
+Exemplos de entradas aceitas: (1+1) , ((2*5)-4) , ((3+6)*(4-2)) 
+OBS: A virgula serve para separar os exemplos, não fazendo parte das entradas aceitas
+     pois se colocada como entrada será dada como inválida.
+
 A saida do programa pode ser um numero de ponto flutuante positivo ou negativo,
 depender de como a expressão for feita

@@ -53,7 +53,6 @@ int main(void){
 
 				// Por fim empilharemos o novo nó na pilha
 				pilhaArv_empilha(novaArv, pilha_arv);
-				printf("Empilhando abre parenteses\n");
 				break;
 			case ')':
 				// Aqui verificamos a pilha está vazia ou não
@@ -75,9 +74,13 @@ int main(void){
 						// Resetamos o acumulador para que ele possa pegar outro numero na leitura
 						acumulador_Num = -1;
 					}
+
+					if(arv_getDir(isArvOn) == NULL)	{
+						printf("ERRO: Operacao nao finalizada\n");
+						isBuggy = 'Y';
+					}
 					// Por fim desempilhamos o topo da pilha
 					arvDesempilhada = pilhaArv_desempilha(pilha_arv);
-					printf("Desempilhando abre parenteses\n");
 
 				// Caso ela esteja vazia, então a expressão está errada, e o programa irá parar
 				} else {
@@ -92,30 +95,36 @@ int main(void){
 				// Aqui verificamos se a pilha está vazia ou não
 				// Caso ela não esteja vazia...
 				if(isArvOn != NULL){
-
-					// Vemos se a variavel "acumulador_Num" pegou algum numero durante a leitura
-					if(acumulador_Num != -1) {
-						// Caso tenha pego criamos o nó para o numero e adicionamos o numero ao nó 
-						Arv* noNum = arv_cria('N', arv_criavazia(), arv_criavazia());
-						arv_setNum(noNum, acumulador_Num);
-						// Como estamos pegando um operador, já se pressupoe que o numero está a esquerda, por isso atribuimos a esquerda.
-						if (arv_vazia( arv_getEsq( isArvOn ) )) arv_setEsq(isArvOn, noNum);
-						else {
-							isBuggy = 'Y';
-							printf("ERRO: Tentando alocar um no de numero em um local ja alocado\n");
-						}
-						// Resetamos o acumulador para que ele possa pegar outro numero na leitura
-						acumulador_Num = -1;
-					}
 					
-					// Então setamos o operador do nó no topo da pilha
-					arv_setOp(isArvOn, charAtt);
-					// E informamos que esse nó é um operador
-					arv_setInfo(isArvOn, 'O');
+						// Vemos se a variavel "acumulador_Num" pegou algum numero durante a leitura
+						if(acumulador_Num != -1) {
+							// Caso tenha pego criamos o nó para o numero e adicionamos o numero ao nó 
+							Arv* noNum = arv_cria('N', arv_criavazia(), arv_criavazia());
+							arv_setNum(noNum, acumulador_Num);
+							// Como estamos pegando um operador, já se pressupoe que o numero está a esquerda, por isso atribuimos a esquerda.
+							if (arv_vazia( arv_getEsq( isArvOn ) )) arv_setEsq(isArvOn, noNum);
+							else {
+								isBuggy = 'Y';
+								printf("ERRO: Tentando alocar um no de numero em um local ja alocado\n");
+							}
+							// Resetamos o acumulador para que ele possa pegar outro numero na leitura
+							acumulador_Num = -1;
+						}
+						
+						if(arv_getEsq(isArvOn) == NULL)	{
+							printf("ERRO: Operador sem operandos\n");
+							isBuggy = 'Y';
+						}
+							
+						// Então setamos o operador do nó no topo da pilha
+						arv_setOp(isArvOn, charAtt);
+						// E informamos que esse nó é um operador
+						arv_setInfo(isArvOn, 'O');
 
-					// Mudamos o lado do topo para direita, o que significa que o proximo nó a ser adicionado, será adicionado á direita
-					pilhaArv_setLadoTopo(pilha_arv, 'D');
-					printf("Peguei o op: %c\n", charAtt);
+						// Mudamos o lado do topo para direita, o que significa que o proximo nó a ser adicionado, será adicionado á direita
+						pilhaArv_setLadoTopo(pilha_arv, 'D');
+
+					
 
 				// Caso ela esteja vazia, então ocorreu um erro
 				} else {
@@ -152,7 +161,6 @@ int main(void){
 						//Como "0" na tabela ascii é representado por 48, então diminuiremos 48 do resultado da conversão
 						acumulador_Num = (int)charAtt - 48;
 					}
-					printf("Pegando o numero: %d\n", acumulador_Num);
 				
 				// Caso ela esteja vazia, então a expressão está incorreta e o programa fechará com a mensagem de erro
 				} else {
@@ -176,6 +184,8 @@ int main(void){
 		// Caso ele receba aqui o '/n' o while finalizará 
 		scanf("%c", &charAtt);
 	}
+
+	if(pilhaArv_consultaTopo(pilha_arv) != NULL) isBuggy = 'Y';
 	
 	// Verificamos se houve algum bug/erro durante a execução do programa
 	// Caso a resposta seja "N" de não, então tudo ocorreu bem e podemos resolver a expressão

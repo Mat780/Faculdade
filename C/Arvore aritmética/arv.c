@@ -202,7 +202,6 @@ void arv_posordem(Arv* a){
 // Função que faz o percuso de pós-ordem da árvore e resolve a expressão no processo
 void arv_resolve(Arv* a, PilhaFloat* pilha){
 	if(!arv_vazia(a)){
-		printf("OP: %c, NUM: %d\n", arv_getOp(a), arv_getNum(a));
 		arv_resolve(arv_getEsq(a), pilha);
 		arv_resolve(arv_getDir(a), pilha);
 		// Aqui verificamos se a informação do nó é válida para processamento
