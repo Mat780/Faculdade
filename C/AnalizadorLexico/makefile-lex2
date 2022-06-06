@@ -1,0 +1,8 @@
+avalia-lex2: lex2.o avaliaLex.o
+	gcc lex2.o avaliaLex.o -g -o avalia-lex2 -ansi -Wall -pedantic
+lex2.o: lex.h lex2.c
+	gcc -c -g lex2.c
+avaliaLex.o: avaliaLex.c
+	gcc -c avaliaLex.c -g
+clean:
+	rm *.o

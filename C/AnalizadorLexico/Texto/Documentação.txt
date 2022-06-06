@@ -1,0 +1,95 @@
+/------------------------------------------------------------/
+Estes estados são os estados dados pela Edna
+
+Estado 0: Estado inicial
+
+Estado 1: Representa o estado após receber um "!"
+
+Estado 2: Representa o estado após receber um "&"
+
+Estado 3: Representa o estado após receber um "<" ou ">"
+
+Estado 4: Representa o estado após receber um "="
+
+Estado 5: Representa o estado após receber um "|"
+
+Estado 6: Representa o estado após receber um numero
+
+Estado 7: Representa o estado após receber uma letra
+
+/------------------------------------------------------------/
+A partir daqui são estados criados por nós
+
+
+
+/-----------------------------------------------------------/
+Nosso dicionário: 
+
+Lexema: É o vetor que armazena o código lido, ou seja, o local onde o "char" lido será colocado.
+
+ilexema: É o iterável do lexema.
+
+match(): Verifica se o código está semanticamente correto, para isso ele faz uso do lex() (Análise léxica).
+
+S(): Produção inicial.
+
+Function(): Produção que obriga a ter um tipo e chama Function_.
+
+Type(): Produção que determina o tipo.
+
+Function_(): Segunda parte da produção de function, aqui se verifica a estrutura de uma função padrão e a main.
+
+B(): Representa o corpo de uma função, chamando C() e B().
+
+C(): Serve para declaração de variável, inicialização do while e por fim a estrutura de abre e fecha chaves
+
+E(): Chama a produção T() e o E_()
+
+T(): Chama a produção F() e a produção T_()
+
+F(): Produção que pode gerar ou abre chaves produção E() e fecha chaves, ou uma variável ou um numero.
+
+T_(): (NUMERO OU VARIAVEL) OP_MULT (NUMERO OU VARIAVEL ) | Epsilon
+
+E_(): (NUMERO OU VARIAVEL) OP_ADIT (NUMERO OU VARIAVEL ) | Epsilon
+
+F_CASE(): Analisa tanto o 'case' como o 'default'.
+
+CASE_(): Analisa o que está dentro do 'case', no corpo desse.
+
+C_(): ID ou num que está entre o 'case' e o ':'.
+
+EXP_CASE(): Expressão que está entre o 'case' e o ':'.
+
+CASE_CONDICAO(): Condição que está entre o 'case' e o ':' chamando o C_().
+
+QUEBRAR(): Aferi os 'break's e os ':'.
+
+
+/-----------------------------------------------------------/
+Linha de chamada:
+
+Iniciamos no lookahead:
+    ->Chama o lex() //Lex analisa a expressão.
+    ->Inicia o S();
+        -> Inicia function()
+            ->Inicia type()
+            ->Function_
+                ->Chama o match();
+                    ->Chama o lex () //Começa tudo de novo, outra vez.
+
+/-----------------------------------------------------------/
+Linha de chamada da compilacao do termo CASE e BREAK:
+
+    Comando CASE lido:
+    -> F_case()
+        ->CASE_CONDICAO()
+            Pode ir para ->C_()
+                            ->EXP_CASE()
+        ->CASE_()
+            Pode ir para ->F_CASE()
+        ->QUEBRAR()
+
+
+
+

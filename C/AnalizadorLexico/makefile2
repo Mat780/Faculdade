@@ -1,0 +1,8 @@
+parser2: lex2.o parser.o
+	gcc parser.o lex2.o -g -o parser2 -ansi -Wall -pedantic
+lex2.o: lex.h lex2.c
+	gcc -c lex2.c -g
+parser.o: parser.h parser.c
+	gcc -c parser.c -g
+clean:
+	rm *.o
