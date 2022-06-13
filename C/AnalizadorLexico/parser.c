@@ -371,8 +371,8 @@ void C_() {
   /* Se lookahead for igual a uma variavel */
   if (lookahead == ID) {
 
-      match(ID);
-      EXP_CASE();
+    match(ID);
+    EXP_CASE();
 
   }
   /* Se lookahead for igual a um valor real. */
