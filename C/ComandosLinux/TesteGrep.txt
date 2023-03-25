@@ -1,0 +1,6 @@
+Este e um teste para o grep
+conseguir achar e imprimir
+somente a linha
+com o termo de pesquisa apropriado
+a separacao entre linhas
+e de fato proposital
