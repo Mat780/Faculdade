@@ -1,0 +1,25 @@
+# ------------------------------------------------------------------------------
+# Código qual é o intervalo do valor
+# ------------------------------------------------------------------------------
+# Algoritmo:
+#    numero = 6
+#    intervalo = 1
+#    while (intervalo > 0)
+#       if (0 < numero && numero < 5)
+#    	    intervalo = 1
+#       else if (numero < 10)
+#    	    intervalo = 2
+#       else if (numero < 15)
+#    	    intervalo = 3
+#       else
+#    	    intervalo = 0
+#       numero++
+# ------------------------------------------------------------------------------
+# Uso dos registradores:
+#    R0: zero
+#    R1: numero
+#    R2: intervalo
+#    R3: primeiro auxiliar
+#    R4: segundo auxiliar
+#    R5: terceiro auxiliar
+#    R9: quarto auxiliar

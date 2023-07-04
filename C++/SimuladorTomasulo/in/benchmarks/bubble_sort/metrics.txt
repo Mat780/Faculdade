@@ -1,0 +1,59 @@
+MÉTRICAS:
+# Frequência CPU: 500 Mhz
+# Total de Instruções Executadas: 3635
+# Ciclos: 4840
+# CPI Médio: 1.3315
+# t_CPU: 9680 ns
+# MIPS: 375.517 milhões de instruções por segundo
+# Acessos a memoria: 1247
+# Preditor: 2 bits
+# Taxa de sucesso - 1 Preditor: 61.4002%
+
+
+
+MÉTRICAS:
+# Frequência CPU: 500 Mhz
+# Total de Instruções Executadas: 3635
+# Ciclos: 4905
+# CPI Médio: 1.34938
+# t_CPU: 9810 ns
+# MIPS: 370.54 milhões de instruções por segundo
+# Acessos a memoria: 1247
+# Preditor: 2 bits
+# Taxa de sucesso - BPB[4]: 61.3056%
+
+
+MÉTRICAS:
+# Frequência CPU: 500 Mhz
+# Total de Instruções Executadas: 3635
+# Ciclos: 5017
+# CPI Médio: 1.38019
+# t_CPU: 10034 ns
+# MIPS: 362.268 milhões de instruções por segundo
+# Acessos a memoria: 1247
+# Preditor: 2 bits
+# Taxa de sucesso - Preditor de correlação (2,2): 57.1299%
+
+
+MÉTRICAS:
+# Frequência CPU: 500 Mhz
+# Total de Instruções Executadas: 3635
+# Ciclos: 4955
+# CPI Médio: 1.36314
+# t_CPU: 9910 ns
+# MIPS: 366.801 milhões de instruções por segundo
+# Acessos a memoria: 1247
+# Preditor: 3 bits
+# Taxa de sucesso - Preditor de correlação (3,3): 58.6459%
+
+
+MÉTRICAS:
+# Frequência CPU: 500 Mhz
+# Total de Instruções Executadas: 3635
+# Ciclos: 5017
+# CPI Médio: 1.38019
+# t_CPU: 10034 ns
+# MIPS: 362.268 milhões de instruções por segundo
+# Acessos a memoria: 1247
+# Preditor: 2 bits
+# Taxa de sucesso - Preditor de correlação (2,2): 57.1299%
