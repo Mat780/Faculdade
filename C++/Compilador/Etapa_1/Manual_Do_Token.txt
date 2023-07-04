@@ -1,0 +1,49 @@
+UNDEF: Indefinido, normalmente um erro
+
+ID: Uma sequência de letras, dígitos e underscores, começando sempre com
+	uma letra. A linguagem distingue letras maiúsculas e minúsculas;
+
+NUMERO: 
+	INTEIRO - Uma sequência de dígitos decimais, que formam um inteiro
+
+OP: "&&" - E lógico
+	"<" - Menor que
+	">" - Maior que
+    "+" - Adição
+	"-" - Subtração
+	"*" - Multiplicação
+	"/" - Divisão
+	"=" - Atribuição
+	"==" - Igualdade
+	"!=" - Diferença
+    "!" - Negação
+
+SEP: "(" ")" - Parênteses
+     "[" "]" - Colchetes
+     "{" "}" - Chaves
+     "." - Ponto
+     ";" - Ponto e vírgula
+     "," - Vírgula 
+
+PALAVRAS RESERVADAS:
+	BOOLEAN              
+	CLASS                
+	ELSE                 
+	EXTENDS              
+	FALSE                
+	IF                   
+	INT                  
+	LENGTH               
+	MAIN                 
+	NEW                  
+	PUBLIC               
+	RETURN               
+	STATIC               
+	STRING               
+	SYSTEM_OUT_PRINTLN   
+	THIS                 
+	TRUE                 
+	VOID                 
+	WHILE                
+
+END_OF_FILE: Fim de arquivo.

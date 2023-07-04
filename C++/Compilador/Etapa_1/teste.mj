@@ -1,0 +1,36 @@
+class FuncaoPrincipal{
+    public static void main(String[] umIdMtloco){
+        { 
+            if (!false) {
+                boba = 10;
+                blublu[boba] = new int[(new brube())];
+                System.out.println(this.length);
+                System.out.println(boba.eMesmo());
+                System.out.println(boba.eMesmo(true, !true[boba]));
+            } else {
+                naoBoba = true && true < false > true == boba != false + meuAmor - nada * 0 / nadaV2;
+                while(true) System.out.println(boba);
+            }
+        }
+    }
+}
+
+class meuAmor extends boba {
+    int[] abracos;
+    boolean brava;
+    int beijosQueJaDei;
+    boba amor;
+
+    public int darAbracos(int abracos, int beijosQueJaDei) {
+        int[] abracos;
+        boolean brava;
+        int beijosQueJaDei;
+        boba amor;
+        
+        abu[doidera] = true;
+        amor = infinito;
+
+        return abracos;
+
+    }
+}
