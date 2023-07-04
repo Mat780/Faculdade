@@ -14,6 +14,14 @@
 
 ##### Comandos Linux (25/03/2022)
 
+### Em C++:
+
+##### Bash (12/05/2023)
+
+##### Compilador (26/06/2023)
+
+##### Continuação do simulador de tomasulo (04/07/2023)
+
 ### Em Java:
 
 ##### Prova de LPOO (06/06/2022)
@@ -25,6 +33,8 @@
 ##### Mineração de repositórios (2022/1)
 
 ##### IA busca cega: Aspirador de pó (24/03/2023)
+
+##### Pantanal.dev Modulo Arara Azul (20/05/2023)
 
 ### Em VHDL:
 
