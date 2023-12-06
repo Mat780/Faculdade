@@ -1,0 +1,29 @@
+Descrição dos testes:
+
+Testes do Teodoro:
+
+Se você executar
+./soueu T <teo1.in
+
+O resultado impresso na tela deve ser similar ao conteúdo de teo1.out.
+
+O mesmo para teo2.in, teo3.in, etc.
+
+Os testes para a Patrícia seguem a mesma ideia, mas devem ser executados assim:
+./soueu P <pat1.in
+
+E o resutado deve ser similar ao conteúdo de pat1.out.
+
+O mesmo para pat2.in, pat3.in, etc.
+
+Para o Fábio e Ester, seguem os mesmos princípios com os vários testes.
+
+Para o Fábio:
+./soueu F <fab1.in
+
+Para a Ester:
+./soueu E <est1.in
+
+Note que alguns comandos do Fábio e da Patrícia podem produzir resultados diferentes do exemplo. Em particular,
+1. O comando Q da Patrícia retorna um valor binário aleatório.
+2. O comando X do Fábio retorna uma saída x distinta em cada execução pois depende de um número aleatório.
